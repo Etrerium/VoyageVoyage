@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Accueil from './components/Accueil';
-import Liste from './components/Liste';
-import Recherche from './components/Recherche';
-import Reservation from './components/Reservation';
+import Accueil from './pages/Accueil';
+import Liste from './pages/Liste';
+import Recherche from './pages/Recherche';
+import Reservation from './pages/Reservation';
 
 const App = () => {
   const [page, setPage] = useState('accueil');
