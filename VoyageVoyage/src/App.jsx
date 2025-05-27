@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import Accueil from './components/Accueil';
+import Liste from './components/Liste';
+import Recherche from './components/Recherche';
+import Reservation from './components/Reservation';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [page, setPage] = useState('accueil');
+
+  const renderPage = () => {
+    switch (page) {
+      case 'accueil':
+        return <Accueil />;
+      case 'liste':
+        return <Liste />;
+      case 'recherche':
+        return <Recherche />;
+      case 'reservation':
+        return <Reservation />;
+      default:
+        return <Accueil />;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <nav className="p-4 bg-gray-100 flex gap-4">
+        <a href="#" onClick={() => setPage('accueil')}>Accueil</a>
+        <a href="#" onClick={() => setPage('liste')}>Liste</a>
+        <a href="#" onClick={() => setPage('recherche')}>Recherche</a>
+        <a href="#" onClick={() => setPage('reservation')}>Réservation</a>
+      </nav>
+      <main className="p-6">
+        {renderPage()}
+      </main>
+    </div>
+  );
+};
 
-export default App
+export default App;
